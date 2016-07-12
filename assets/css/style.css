@@ -25,7 +25,9 @@ p#rate {
     margin-left: 60%;
     width: 200px;
 }
-
+p#abouttext{
+    margin-left: 35%;
+}
 strong.rating {
     font-size: 40px;
     color: #4CAF50;
@@ -44,18 +46,36 @@ p#car {
     margin-left: 38%;
     background-color: white;
 }
-
-button.main, button#interest {
+h1{
+    margin-left:44%;
+}
+h2{
+    margin-left: 35%;
+}
+button{
     transition-duration: 0.4s;
     border: 1px solid #008CBA;
     padding: 10px;
-    margin-left: 5%;
     background-color: white;
     font-size: 16px;
     border-radius: 4px;
 }
-
-button.main:hover {
+button.profile{
+    transition-duration: 0.4s;
+    border: 1px solid #008CBA;
+    padding: 10px;
+    margin-left: 38%;
+    background-color: white;
+    font-size: 16px;
+    border-radius: 4px;
+}
+button.about{
+    margin-left: 44%;
+}
+button.aboutback{
+    margin-left: 44%;
+}
+button:hover{
     cursor: pointer;
     background-color: #008CBA;
     color: white;
