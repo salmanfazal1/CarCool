@@ -120,67 +120,6 @@ p.com {
     margin-left: 100px;
 }
 
-h3{
-    text-align: center;
-    background-color: black;
-    margin: 0;
-    padding: 10px;
-    color: white;
-}
-
-#profile_listing{
-    display: inline-block;
-    float: left;
-    width: 35%;
-    margin-top: 40px;
-}
-
-#car_info{
-    display: inline-block;
-    float: right;
-    width: 60%;
-    margin-top: 40px;
-}
-
-#slide{
-    background-color: grey;
-    width: 70%;
-    padding: 180px;
-}
-
-#info{
-    padding-left: 50px;
-    font-size: 16pt;
-    text-align: left;
-}
-
-#ruler_profile{
-    text-align: center;
-}
-
-#rating{
-    width: 60%;
-    text-align: center;
-}
-
-#rec{
-    padding-left: 20px;
-}
-
-#picture{
-    padding: 80px;
-    background-color: grey;
-}
-
-#reserve{
-    background-color: black;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    margin-top: 180px;
-    float: right;
-}
-
 article.hidden {
     display: none;
 }

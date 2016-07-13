@@ -15,4 +15,20 @@ $(document).ready(function(){
         $("article#about").toggleClass("hidden");
         $("article#main").toggleClass("hidden");
     });
+    $("button.listing").click(function(){
+        $("article#listing").toggleClass("hidden");
+        $("article#main").toggleClass("hidden");
+    });
+    $("button.listingback").click(function(){
+        $("article#listing").toggleClass("hidden");
+        $("article#main").toggleClass("hidden");
+    });
+    $("button.reserve").click(function(){
+        $("article#listing").toggleClass("hidden");
+        $("article#profile").toggleClass("hidden");
+    });
+    $("button.interest").click(function(){
+        $("article#listing").toggleClass("hidden");
+        $("article#profile").toggleClass("hidden");
+    });
 });
