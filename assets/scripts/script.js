@@ -3,7 +3,7 @@ $(document).ready(function(){
         $("article#profile").toggleClass("hidden");
         $("article#main").toggleClass("hidden");
     });
-    $("button.profile").click(function() {
+    $("button.login").click(function() {
         $("article#profile").toggleClass("hidden");
         $("article#main").toggleClass("hidden");
     });
@@ -29,6 +29,26 @@ $(document).ready(function(){
     });
     $("button.interest").click(function(){
         $("article#listing").toggleClass("hidden");
+        $("article#profile").toggleClass("hidden");
+    });
+    $("button.signup").click(function(){
+        $("article#main").toggleClass("hidden");
+        $("article#signupmain").toggleClass("hidden");
+    });
+    $("button.carcool").click(function(){
+        $("article#signupcool").toggleClass("hidden");
+        $("article#signupmain").toggleClass("hidden");
+    });
+    $("button.carrule").click(function(){
+        $("article#signuprule").toggleClass("hidden");
+        $("article#signupmain").toggleClass("hidden");
+    });
+    $("button.coolfinish").click(function(){
+        $("article#signupcool").toggleClass("hidden");
+        $("article#profile").toggleClass("hidden");
+    });
+    $("button.rulefinish").click(function(){
+        $("article#signuprule").toggleClass("hidden");
         $("article#profile").toggleClass("hidden");
     });
 });
