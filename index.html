@@ -18,6 +18,96 @@
             <button class="signup">Sign up</button>
             <button class="about">About</button>
         </article>
+        	<button id = 'carrule'>Rent out a car</button>
+        	<button id = 'carcool'>I need a car</button>
+
+        	<form action = "/carcoolersignup" method="post" id="carcooler">
+        		<div>
+        			<label id = "name">
+	        			<span class="label">Name</span>
+	        			<input type="Name" id="Name" name="Name" title="Your name" placeholder="Name" required>     
+        			</label>
+        		</div>	
+        		<div>
+        			<label id = "license">
+	        			<span class="label">License number</span>
+	        			<input type="license" id="license" name="license" title="license" placeholder="License number" required>     
+        			</label>
+        			<label id = "licenseexpiry">
+	        			<span class="labelexpiry">License Expiry date</span>
+	        			<input type="licenseexpiry" id="licenseexpiry" name="licenseexpiry" title="licenseexpiry" placeholder="DDMMYY" required>     
+        			</label>
+        		</div>	
+        		
+        		<div>
+        			<label id = "ccname">
+        				<span class="label">Cardholder name</span>
+        				<input type="name" id="name" name="name" title="name" required>      
+        			</label>
+        			<label id = "creditcard">
+        				<span class="label">Credit Card number</span>
+        				<input type="cc" id="cc" name="cc" title="cc" placeholder="Credit card number"  required>      
+        			</label>
+        			<label id = "expdate">
+        				<span class="label">Expiry Date</span>
+        				<input type="cce" id="cce" name="cce" title="cce" placeholder="MMYY"  required>      
+        			</label>
+        			<label id = "seccode">
+        				<span class="label">Security Code</span>
+        				<input type="seccode" id="seccode" name="security code" title="security code" required>  
+        			</label>
+
+        		</div>       		
+        	</form>
+
+        	<form action = "/carrulersignup" method="post" id="carruler">
+        		<div>
+        			<label id = "name">
+	        			<span class="label">Name</span>
+	        			<input type="Name" id="Name" name="Name" title="Your name" placeholder="Name" required>     
+        			</label>
+        		</div>	
+        		<div>
+        			<label id = "licenseplate">
+	        			<span class="label">License plate number</span>
+	        			<input type="licenseplate" id="licenseplate" name="licenseplate" title="licenseplate" placeholder="License Plate Number" required>     
+        			</label>
+        		</div>
+
+        		<div>
+        			<label id = "insurancenumber">
+	        			<span class="label">License Expiry date</span>
+	        			<input type="insurancenumber" id="insurancenumber" name="insurancenumber" title="insurancenumber" required> 
+	        			<input type="insuranceexpiry" id="insuranceexpiry" name="insuranceexpiry" title="insuranceexpiry" placeholder="DDMMYY" required>     
+        			</label>
+        		</div>	
+        		
+        		<div>
+        			<label id = "ccname">
+        				<span class="label">Cardholder name</span>
+        				<input type="name" id="name" name="name" title="name" required>      
+        			</label>
+        			<label id = "creditcard">
+        				<span class="label">Credit Card number</span>
+        				<input type="cc" id="cc" name="cc" title="cc" placeholder="Credit card number"  required>      
+        			</label>
+        			<label id = "expdate">
+        				<span class="label">Expiry Date</span>
+        				<input type="cce" id="cce" name="cce" title="cce" placeholder="MMYY"  required>      
+        			</label>
+        			<label id = "seccode">
+        				<span class="label">Security Code</span>
+        				<input type="seccode" id="seccode" name="security code" title="security code" required>  
+        			</label>
+
+        		</div>       		
+        	</form>
+
+
+        <article>
+        	
+        </article>
+
         <article id="about" class='hidden'>
             <h1>About CarCool</h1>
             <p id="abouttext">CarCool is the cool new way of getting around, simply make a profile and get to work!</p>
