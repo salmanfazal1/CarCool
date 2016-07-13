@@ -1,2 +1,0 @@
-# CarCool
-AirBnB for cars
