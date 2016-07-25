@@ -44,8 +44,14 @@ $(document).ready(function(){
         $("article#signupmain").toggleClass("hidden");
     });
     $("button.coolfinish").click(function(){
-        var data = JSON.stringify($('#carcooler').serializeArray());
-        $.post('carcoolersignup', data, function(data){
+        //var data = JSON.stringify($('#carcooler').serializeArray());
+        var data = $('#carcooler').serializeArray();
+        var json = {};
+        $.each(data, function(){
+            json[this.name] = this.value;
+        })
+        //console.log(data);
+        $.post('carcoolersignup', JSON.stringify(json), function(data){
             if (data == 1 ) {
                     $("article#signupcool").toggleClass("hidden");
                     $("article#profile").toggleClass("hidden");
@@ -56,8 +62,13 @@ $(document).ready(function(){
 
     });
     $("button.rulefinish").click(function(){
-        var data = JSON.stringify($('#carruler').serializeArray());
-        $.post('carrulersignup', data, function(data){
+        //var data = JSON.stringify($('#carruler').serializeArray());
+        var data = $('#carcooler').serializeArray();
+        var json = {};
+        $.each(data, function(){
+            json[this.name] = this.value;
+        })
+        $.post('carrulersignup', JSON.stringify(json), function(data){
             if (data == 1){
                 $("article#signuprule").toggleClass("hidden");
                 $("article#profile").toggleClass("hidden");
