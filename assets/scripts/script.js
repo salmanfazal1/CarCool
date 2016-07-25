@@ -44,11 +44,25 @@ $(document).ready(function(){
         $("article#signupmain").toggleClass("hidden");
     });
     $("button.coolfinish").click(function(){
-        $("article#signupcool").toggleClass("hidden");
-        $("article#profile").toggleClass("hidden");
+        var data = JSON.stringify($('#carcooler').serializeArray());
+        $.post('carcoolersignup', data, function(data){
+            if (data == 1 ) {
+                    $("article#signupcool").toggleClass("hidden");
+                    $("article#profile").toggleClass("hidden");
+            }/*else if(data == 2){
+
+            }*/
+        })
+
     });
     $("button.rulefinish").click(function(){
-        $("article#signuprule").toggleClass("hidden");
-        $("article#profile").toggleClass("hidden");
+        var data = JSON.stringify($('#carruler').serializeArray());
+        $.post('carrulersignup', data, function(data){
+            if (data == 1){
+                $("article#signuprule").toggleClass("hidden");
+                $("article#profile").toggleClass("hidden");
+            }
+        })
+        
     });
 });
