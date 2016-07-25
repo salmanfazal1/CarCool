@@ -63,7 +63,7 @@ $(document).ready(function(){
     });
     $("button.rulefinish").click(function(){
         //var data = JSON.stringify($('#carruler').serializeArray());
-        var data = $('#carcooler').serializeArray();
+        var data = $('#carruler').serializeArray();
         var json = {};
         $.each(data, function(){
             json[this.name] = this.value;
