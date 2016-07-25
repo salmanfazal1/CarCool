@@ -59,3 +59,10 @@ CREATE TABLE comments (
 
     FOREIGN KEY(username) REFERENCES users(username)
 );
+
+CREATE TABLE listings (
+    username TEXT NOT NULL,
+    car_type TEXT NOT NULL,
+    license_plate TEXT NOT NULL PRIMARY KEY,
+    FOREIGN KEY(username) REFERENCES users(username)
+);
