@@ -4,7 +4,8 @@ var bcrypt = require('bcryptjs');
 var path = require('path');
 var nunjucks = require('nunjucks');
 var bodyParser = require('body-parser');
-var session = require('express-session')
+var session = require('express-session');
+var engines = require('consolidate');
 
 function create_user(username, password, password_confirmation, callback) {
     if(password !== password_confirmation) {
@@ -31,7 +32,10 @@ var app = express();
 
 app.use(express.static(path.join(__dirname, 'assets')));
 app.use(bodyParser.urlencoded({ extended: false })); 
-app.use(session({ secret: '', resave: false, saveUninitialized: false }));
+//app.use(session({ secret: '', resave: false, saveUninitialized: false }));
+app.set('views', __dirname + '/views');
+app.engine('html', engines.mustache);
+app.set('view engine', 'html');
 
 app.get('/', function (req, res) {
   res.render('index.html');
@@ -165,7 +169,7 @@ app.get('/profile', function(req, res) {
     db.all('SELECT * FROM ratings_per_user WHERE username = ?', [username], function(err, rows) {
         var ratings = rows.map(function(row) {
             return row;
-        }
+        })
 
         res.json(ratings);
     });
@@ -179,7 +183,7 @@ app.get('/profile', function(req, res) {
                 return row;
 
             }
-        }
+        })
 
         // This contains the comment, rating, and recommend that each user added
         res.json(comments);
