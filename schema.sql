@@ -6,7 +6,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE rulers (
-    username TEXT PRIMARY KEY,
+    username TEXT NOT NULL,
     location POINT NOT NULL,
 
     FOREIGN KEY(username) REFERENCES users(username)
