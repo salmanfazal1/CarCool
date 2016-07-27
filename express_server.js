@@ -28,16 +28,10 @@ var db = new sqlite3.Database('db.sqlite');
 db.serialize();
 
 var app = express();
-nunjucks.configure('views', { autoescape: true, express: app });
 
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(session({ secret: '', resave: false, saveUninitialized: false }));
-
-app.use(function(req, res, next) {
-    res.locals.session = req.session;
-    next();
-});
 
 app.get('/', function (req, res) {
   res.render('index.html');
