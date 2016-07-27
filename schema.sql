@@ -39,6 +39,7 @@ CREATE TABLE total_ratings (
     username TEXT NOT NULL,
     rating score NOT NULL,
     recommend INTEGER DEFAULT 0,
+    comment TEXT,
 
     FOREIGN KEY(username) REFERENCES users(username)
 );
