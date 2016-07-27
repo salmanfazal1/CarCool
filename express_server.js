@@ -29,7 +29,7 @@ db.serialize();
 
 var app = express();
 
-app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static(path.join(__dirname, 'assets')));
 app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(session({ secret: '', resave: false, saveUninitialized: false }));
 
