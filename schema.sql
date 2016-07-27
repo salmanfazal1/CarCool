@@ -40,8 +40,10 @@ CREATE TABLE total_ratings (
     rating score NOT NULL,
     recommend INTEGER DEFAULT 0,
     comment TEXT,
+    rater TEXT,
 
-    FOREIGN KEY(username) REFERENCES users(username)
+    FOREIGN KEY(username) REFERENCES users(username),
+    FOREIGN KEY(rater) REFERENCES users(username)
 );
 
 CREATE TABLE ratings_per_user (
