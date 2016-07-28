@@ -18,10 +18,22 @@
             <button class="login">Login</button>
             <button class="signup">Sign up</button>
             <button class="about">About</button>
+            <button class="profile">My Profile</button>
         </article>
         <article id="signupmain" class="hidden">
             <button class = 'carrule'>Rent out a car</button>
         	<button class = 'carcool'>I need a car</button>
+        </article>
+        <article id="login" class="hidden">
+            <form action="/signin" method="get" id="carcooler">
+                <label id ="username">
+                    <input type="username" id="username" name="username" title="Your Username" placeholder="Username" required>
+                </label>
+                <label id ="password">
+                    <input type="password" id="password" name="password" title="Your Password" placeholder="Password" required>
+                </label>
+            </form>
+            <button class = "loginFinish">Log In</button>
         </article>
         <article id="signupcool" class="hidden">
         	<form action = "/carcoolersignup" method="post" id="carcooler">
