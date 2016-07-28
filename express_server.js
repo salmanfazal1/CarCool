@@ -190,6 +190,26 @@ app.get('/profile', function(req, res) {
     });
 });
 
+
+//not sure how to create listing for particular user
+app.post('/addlisting', function(req, res) {
+    db.run('INSERT INTO listings VALUES (?, ?, ?, ?, ?, ?, ?)', [username, req.body.name, req.body.license, req.body.seats, req.body.ac, req.body.auto, req.body.price], function(err) {
+        callback(err, username);
+    });
+
+//to show listings (don't know how to implement the search)
+app.get('/listings', function(req, res){
+    db.run('SELECT * FROM listings WHERE car_type LIKE ?', [%search%], function(err,))
+});
+
+//to update a listing (same username problem)(working on updating just the fields that were changed)
+app.put('/modlist', function(req, res){
+    db.run('UPDATE listings SET 
+    });
+});
+
+//delete listing 
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
