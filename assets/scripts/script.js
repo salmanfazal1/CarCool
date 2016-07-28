@@ -4,7 +4,7 @@ $(document).ready(function(){
         $("article#main").toggleClass("hidden");
     });
     $("button.login").click(function() {
-        $("article#profile").toggleClass("hidden");
+        $("article#login").toggleClass("hidden");
         $("article#main").toggleClass("hidden");
     });
     $("button.about").click(function() {
@@ -43,6 +43,10 @@ $(document).ready(function(){
         $("article#signuprule").toggleClass("hidden");
         $("article#signupmain").toggleClass("hidden");
     });
+    $("button.profile").click(function(){
+        $("article#main").toggleClass("hidden");
+        $("article#profile").toggleClass("hidden");
+    });
     $("button.coolfinish").click(function(){
         //var data = JSON.stringify($('#carcooler').serializeArray());
         var data = $('#carcooler').serializeArray();
@@ -59,7 +63,8 @@ $(document).ready(function(){
 
             }*/
         })
-
+            $("article#signupcool").toggleClass("hidden");
+            $("article#main").toggleClass("hidden");
     });
     $("button.rulefinish").click(function(){
         //var data = JSON.stringify($('#carruler').serializeArray());
@@ -74,6 +79,11 @@ $(document).ready(function(){
                 $("article#profile").toggleClass("hidden");
             }
         })
-        
+        $("article#signuprule").toggleClass("hidden");
+        $("article#main").toggleClass("hidden");
     });
+    $("button.loginFinish").click(function(){
+        $("article#login").toggleClass("hidden");
+        $("article#main").toggleClass("hidden");
+    })
 });
