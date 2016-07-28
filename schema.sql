@@ -1,3 +1,5 @@
+
+
 CREATE TABLE users (
     username TEXT PRIMARY KEY,
     password TEXT NOT NULL,
@@ -30,14 +32,10 @@ CREATE TABLE exchange (
     FOREIGN KEY(ruler) REFERENCES users(username)
 );
 
-CREATE DOMAIN score AS smallint 
-    DEFAULT NULL
-    CHECK (VALUE >= 1 AND VALUE <= 5);
-
 CREATE TABLE total_ratings (
     r_id INTEGER PRIMARY KEY,
     username TEXT NOT NULL,
-    rating score NOT NULL,
+    rating INTEGER NOT NULL,
     recommend INTEGER DEFAULT 0,
     comment TEXT,
     rater TEXT,
@@ -49,7 +47,7 @@ CREATE TABLE total_ratings (
 CREATE TABLE ratings_per_user (
     username TEXT PRIMARY KEY,
     rating score NOT NULL,
-    recommend INTEGER NOT NULL
+    recommend INTEGER NOT NULL,
 
     FOREIGN KEY(username) REFERENCES users(username)
 );
