@@ -204,7 +204,7 @@ app.get('/listings', function(req, res){
 
 //to update a listing (same username problem)(working on updating just the fields that were changed)
 app.put('/modlist', function(req, res){
-    db.run('UPDATE listings SET 
+    db.run('UPDATE listings SET' 
     });
 });
 
