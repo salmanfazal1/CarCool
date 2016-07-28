@@ -85,5 +85,8 @@ $(document).ready(function(){
     $("button.loginFinish").click(function(){
         $("article#login").toggleClass("hidden");
         $("article#main").toggleClass("hidden");
-    })
+    });
+    $("button#createlisting").click(function(){
+        
+    });
 });
