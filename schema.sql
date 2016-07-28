@@ -67,5 +67,9 @@ CREATE TABLE listings (
     username TEXT NOT NULL,
     car_type TEXT NOT NULL,
     license_plate TEXT NOT NULL PRIMARY KEY,
+    seats TEXT,
+    ac TEXT,
+    auto TEXT,
+    price TEXT NOT NULL,
     FOREIGN KEY(username) REFERENCES users(username)
 );
