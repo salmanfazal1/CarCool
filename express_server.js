@@ -199,7 +199,7 @@ app.post('/addlisting', function(req, res) {
 
 //to show listings (don't know how to implement the search)
 app.get('/listings', function(req, res){
-    db.run('SELECT * FROM listings WHERE car_type LIKE ?', [%search%], function(err,))
+    //db.run('SELECT * FROM listings WHERE car_type LIKE ?', [%search%], function(err,))
 });
 
 //to update a listing (same username problem)(working on updating just the fields that were changed)
