@@ -105,7 +105,7 @@ app.post('/createListing', function(req, res) {
             var latitude = results[0].geometry.location.lat();
             var longitude = results[0].geometry.location.lng();
             var latlng = "(" + latitude + "," + longitude + ")";
-            db.run('INSERT INTO rulers VALUES (?, ?)', [req.session.username, latlng], function(err) {
+            db.run('INSERT INTO rulers VALUES (?, ?, ?)', [req.session.username, latlng, adr], function(err) {
                 callback(err, req.session.username);
             });
         } 
@@ -203,9 +203,48 @@ app.post('/addlisting', function(req, res) {
         callback(err, username);
     });
 
+function dist(lat1, lng1, lat2, lng2) {
+    var distance = acos(sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * cos(lng1 - lng2));
+    return 6371 * distance;
+}
+
 //to show listings (don't know how to implement the search)
 app.get('/listings', function(req, res){
-    //db.run('SELECT * FROM listings WHERE car_type LIKE ?', [%search%], function(err,))
+    var distance = req.body.distance;
+    var e_radius = 6371;
+    var adr = req.body.address;
+    var geocoder = new google.maps.Geocoder();
+    var address = adr;
+
+    geocoder.geocode( { 'address': address}, function(results, status) {
+
+        if (status == google.maps.GeocoderStatus.OK) {
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+        }
+    });
+    var maxlat = latitude + ((distance/e_radius) * Math.PI / 180);
+    var minlat = latitude - ((distance/e_radius) * Math.PI / 180);
+    var maxlng = longitude + ((distance/e_radius) * Math.PI / 180);
+    var minlng = longitude - ((distance/e_radius) * Math.PI / 180);
+    
+    db.run('SELECT * FROM rulers JOIN ratings_per_user ON rulers.username=ratings_per_user.username WHERE username != ? AND location.x >= ? AND location.x <= ? AND location.y >= ? AND location.y <= ? ORDER BY ratings_per_user.rating, ratings_per_user.recommend', [req.session.username, minlat, maxlat, minlng, maxlng], function(err, rows) {
+        var listings = rows.map(function(row) {
+            if (row.length === 0) {
+                callback('No cars found within the given distance. Please try again.');
+            } else {
+                var x = 0;
+                if (dist(latitude, longitude, row.location.x, row.location.y) < distance) {
+                    return row;
+                    x = x + 1;
+                }
+            }
+            if (x == 0) {
+                callback('No cars found within the given distance. Please try again.');
+            }
+        });
+        res.json(listings);
+    });
 });
 
 //to update a listing (same username problem)(working on updating just the fields that were changed)
