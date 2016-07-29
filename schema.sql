@@ -10,6 +10,7 @@ CREATE TABLE users (
 CREATE TABLE rulers (
     username TEXT NOT NULL,
     location POINT NOT NULL,
+    address TEXT NOT NULL,
 
     FOREIGN KEY(username) REFERENCES users(username)
 );
@@ -56,7 +57,6 @@ CREATE TABLE comments (
     c_id INTEGER PRIMARY KEY,
     username TEXT NOT NULL,
     comment TEXT NOT NULL,
-    timestamp INTEGER NOT NULL DEFAULT (datetime('now')),
 
     FOREIGN KEY(username) REFERENCES users(username)
 );
