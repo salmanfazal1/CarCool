@@ -94,6 +94,24 @@ app.post('/signup', function(req, res) {
     });
 });
 
+app.post('/createListing', function(req, res) {
+    var adr = req.body.address;
+    var geocoder = new google.maps.Geocoder();
+    var address = adr;
+
+    geocoder.geocode( { 'address': address}, function(results, status) {
+
+        if (status == google.maps.GeocoderStatus.OK) {
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+            var latlng = "(" + latitude + "," + longitude + ")";
+            db.run('INSERT INTO rulers VALUES (?, ?)', [req.session.username, latlng], function(err) {
+                callback(err, req.session.username);
+            });
+        } 
+    }); 
+});
+
 app.post('/modpass', function(req, res) {
     db.run('UPDATE users SET password = ? WHERE username = ?', [req.body.password, req.session.username], function(err) {
         callback(err, req.session.username);
@@ -117,18 +135,6 @@ app.get('/payment', function(req, res) {
         });
 
         res.json(cards);
-    });
-});
-
-app.post('/newlocation', function(req, res) {
-    db.run('UPDATE rulers SET location = ? WHERE username = ?', [req.body.new_location, req.session.username], function(err) {
-        callback(err, req.session.username);
-    });
-});
-
-app.post('/addcar', function(req, res) {
-    db.run('INSERT INTO rulers VALUES (?, ?)', [req.session.username, req.body.location], function(err) {
-        callback(err, req.session.username);
     });
 });
 
