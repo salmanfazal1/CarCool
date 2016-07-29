@@ -94,24 +94,6 @@ app.post('/signup', function(req, res) {
     });
 });
 
-app.post('/createListing', function(req, res) {
-    var adr = req.body.address;
-    var geocoder = new google.maps.Geocoder();
-    var address = adr;
-
-    geocoder.geocode( { 'address': address}, function(results, status) {
-
-        if (status == google.maps.GeocoderStatus.OK) {
-            var latitude = results[0].geometry.location.lat();
-            var longitude = results[0].geometry.location.lng();
-            var latlng = "(" + latitude + "," + longitude + ")";
-            db.run('INSERT INTO rulers VALUES (?, ?, ?)', [req.session.username, latlng, adr], function(err) {
-                callback(err, req.session.username);
-            });
-        } 
-    }); 
-});
-
 app.post('/modpass', function(req, res) {
     db.run('UPDATE users SET password = ? WHERE username = ?', [req.body.password, req.session.username], function(err) {
         callback(err, req.session.username);
@@ -196,19 +178,31 @@ app.get('/profile', function(req, res) {
     });
 });
 
-
-//not sure how to create listing for particular user
 app.post('/addlisting', function(req, res) {
-    db.run('INSERT INTO listings VALUES (?, ?, ?, ?, ?, ?, ?)', [username, req.body.name, req.body.license, req.body.seats, req.body.ac, req.body.auto, req.body.price], function(err) {
+    db.run('INSERT INTO listings VALUES (?, ?, ?, ?, ?, ?, ?)', [req.session.username, req.body.name, req.body.license, req.body.seats, req.body.ac, req.body.auto, req.body.price], function(err) {
         callback(err, username);
     });
+    var adr = req.body.address;
+    var geocoder = new google.maps.Geocoder();
+    var address = adr;
+
+    geocoder.geocode( { 'address': address}, function(results, status) {
+
+        if (status == google.maps.GeocoderStatus.OK) {
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+            var latlng = "(" + latitude + "," + longitude + ")";
+            db.run('INSERT INTO rulers VALUES (?, ?, ?)', [req.session.username, latlng, adr], function(err) {
+                callback(err, req.session.username);
+            });
+        } 
+    }); 
 
 function dist(lat1, lng1, lat2, lng2) {
     var distance = acos(sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * cos(lng1 - lng2));
     return 6371 * distance;
 }
 
-//to show listings (don't know how to implement the search)
 app.get('/listings', function(req, res){
     var distance = req.body.distance;
     var e_radius = 6371;
