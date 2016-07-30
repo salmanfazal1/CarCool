@@ -1,10 +1,11 @@
+--The table containing sign in/authorization info for users
 CREATE TABLE users (
     username TEXT PRIMARY KEY,
     password TEXT NOT NULL,
-    rating INTEGER DEFAULT 0,
     is_admin INTEGER DEFAULT 0
 );
 
+--The table containing information on CarRulers' location
 CREATE TABLE rulers (
     username TEXT NOT NULL,
     location POINT NOT NULL,
@@ -13,6 +14,7 @@ CREATE TABLE rulers (
     FOREIGN KEY(username) REFERENCES users(username)
 );
 
+--The table containing payment information for users
 CREATE TABLE payment (
     username TEXT NOT NULL,
     num INTEGER PRIMARY KEY,
@@ -22,6 +24,7 @@ CREATE TABLE payment (
     FOREIGN KEY(username) REFERENCES users(username)
 );
 
+--The table containing the usernames of users who have rented/rented out each other's car
 CREATE TABLE exchange (
     ex_id INTEGER PRIMARY KEY,
     cooler TEXT NOT NULL,
@@ -31,6 +34,7 @@ CREATE TABLE exchange (
     FOREIGN KEY(ruler) REFERENCES users(username)
 );
 
+--The table containing the ratings, recommendations and comments for each exchange
 CREATE TABLE total_ratings (
     r_id INTEGER PRIMARY KEY,
     username TEXT NOT NULL,
@@ -43,6 +47,7 @@ CREATE TABLE total_ratings (
     FOREIGN KEY(rater) REFERENCES users(username)
 );
 
+--The table containing the average rating and recommendation for each user
 CREATE TABLE ratings_per_user (
     username TEXT PRIMARY KEY,
     rating INTEGER NOT NULL,
@@ -51,6 +56,7 @@ CREATE TABLE ratings_per_user (
     FOREIGN KEY(username) REFERENCES users(username)
 );
 
+--The table containing all comments for each user
 CREATE TABLE comments (
     c_id INTEGER PRIMARY KEY,
     username TEXT NOT NULL,
@@ -59,6 +65,7 @@ CREATE TABLE comments (
     FOREIGN KEY(username) REFERENCES users(username)
 );
 
+--The table containing information on each listing made by a CarRuler
 CREATE TABLE listings (
     username TEXT NOT NULL,
     car_make TEXT NOT NULL,
@@ -71,6 +78,7 @@ CREATE TABLE listings (
     FOREIGN KEY(username) REFERENCES users(username)
 );
 
+--Dummy information to populate the schema
 INSERT INTO users(username, password, is_admin) VALUES ("admin_user", "admin123", 1);
 INSERT INTO users(username, password) VALUES ("joe", "iamjoe");
 INSERT INTO users(username, password) VALUES ("jane", "iamjane");
